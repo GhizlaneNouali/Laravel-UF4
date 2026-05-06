@@ -8,22 +8,26 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('caracteristica_cotxe', function (Blueprint $table) {
+        Schema::create('mods', function (Blueprint $table) {
             $table->id();
+
+            $table->string('nom');
+            $table->text('descripcio')->nullable();
+
+            $table->string('tipus')->nullable(); 
+
+            $table->string('imatge')->nullable();
+
             $table->foreignId('cotxe_id')
                   ->constrained('cotxes')
                   ->onDelete('cascade');
-            $table->foreignId('caracteristica_id')
-                  ->constrained('caracteristiques')
-                  ->onDelete('cascade');
-            $table->string('detall')->nullable();
-            $table->unique(['cotxe_id', 'caracteristica_id']);
+
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('caracteristica_cotxe');
+        Schema::dropIfExists('mods');
     }
 };

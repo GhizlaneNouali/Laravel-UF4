@@ -3,25 +3,19 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Comentari extends Model
+class Mod extends Model
 {
-    use SoftDeletes;
-
     protected $fillable = [
+        'nom',
         'descripcio',
+        'tipus',
+        'imatge',
         'cotxe_id',
-        'user_id',
     ];
 
     public function cotxe()
     {
         return $this->belongsTo(Cotxe::class);
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
     }
 }

@@ -14,8 +14,8 @@ return new class extends Migration
             $table->year('any');
             $table->text('descripcio')->nullable();
             $table->string('imatge_principal')->nullable();
-            $table->foreignId('usuari_id')
-                  ->constrained('usuaris')
+            $table->foreignId('user_id')
+                  ->constrained('users')
                   ->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
